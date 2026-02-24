@@ -1,12 +1,14 @@
+import RecentBlog from '@/components/RecentBlog'
 import Hero from '../components/Hero'
 import React from 'react'
+import PopularAuthor from '../components/PopularAuthor'
 
 const Home = () => {
   return (
-    <div className=''>
+    <div>
       <Hero/>
-      {/* <RecentBlog/>
-      <PopularAuthors/> */}
+       <RecentBlog/>
+      <PopularAuthor/>
     </div>
   )
 }

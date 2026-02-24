@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')).render(
         <App />
       </ThemeProvider>
 
-      <Toaster />
+      <Toaster richColors position="top-left"/>
       </PersistGate>
       
     </Provider>

@@ -1,8 +1,8 @@
-import { Avatar, AvatarImage } from '@radix-ui/react-avatar'
+import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import { Card } from '../components/ui/card'
 import React, { useState } from 'react'
 import UserLogo from "../assets/user.jpg"
-import { User } from 'lucide-react'
+import { Loader2, User } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa'
 // import { Label } from '@radix-ui/react-dropdown-menu'
@@ -32,7 +32,8 @@ import { toast } from 'sonner'
 
 
 const Profile = () => {
-  const { user } = useSelector(store => store.auth)
+  const [open, setOpen] = useState(false)
+  const { user,loading } = useSelector(store => store.auth)
   const dispatch = useDispatch()
   const [input, setInput] = useState({
     firstName: user?.firstName,
@@ -90,6 +91,7 @@ const Profile = () => {
       });
 
       if (res.data.success) {
+        setOpen(false)
         toast.success(res.data.message)
         dispatch(setUser(res.data.user))
       }
@@ -109,7 +111,7 @@ const Profile = () => {
       <div className='max-w-6xl mx-auto mt-8'>
         <Card className='flex md:flex-row flex-col gap-10 p-6 md:p-10 dark:bg-gray-800 mx-4 md:mx-0'>
           {/* image section */}
-          <div className='flex flex-col items-center  justify-center md:w-[400px]'>
+          {/* <div className='flex flex-col items-center  justify-center md:w-[400px]'>
             <Avatar className='w-40 h-40 border-2'>
               <AvatarImage src={user.photoUrl || UserLogo} />
             </Avatar>
@@ -121,7 +123,31 @@ const Profile = () => {
               <Link><FaInstagram className='w-6 h-6 text-gray-800 dark:text-gray-100' /></Link>
             </div>
 
+          </div> */}
+          <div className="flex flex-col items-center justify-center md:w-[400px]">
+            <Avatar className="w-40 h-40 border-2 rounded-full overflow-hidden">
+              <AvatarImage
+                src={user?.photoUrl || UserLogo}
+                alt="User profile photo"
+                className="object-cover w-full h-full"
+              />
+              <AvatarFallback className="text-3xl font-semibold">
+                {user?.name?.charAt(0) || "U"}
+              </AvatarFallback>
+            </Avatar>
+
+            <h1 className="text-center font-semibold text-xl text-gray-700 dark:text-gray-300 my-3">
+              {user?.occupation || "MERN Stack Developer"}
+            </h1>
+
+            <div className="flex gap-4 items-center">
+              <Link to="#"><FaFacebook className="w-6 h-6" /></Link>
+              <Link to="#"><FaLinkedin className="w-6 h-6" /></Link>
+              <Link to="#"><FaGithub className="w-6 h-6" /></Link>
+              <Link to="#"><FaInstagram className="w-6 h-6" /></Link>
+            </div>
           </div>
+
           {/* info section */}
           <div >
             <h1 className='font-bold text-center md:text-start text-4xl mb-7'>welcome {user.firstName || "User"}!</h1>
@@ -213,10 +239,10 @@ const Profile = () => {
                 </DialogContent>
               </form>
             </Dialog> */}
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button>Edit Profile</Button>
-              </DialogTrigger>
+            <Dialog open={open} onOpenChange={setOpen}>
+              
+                <Button onClick={()=>setOpen(true)}>Edit Profile</Button>
+              
 
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -337,7 +363,16 @@ const Profile = () => {
                   </div>
 
                   <DialogFooter>
-                    <Button onClick={submitHandler} type="submit">Save changes</Button>
+                    <Button onClick={submitHandler} type="submit">
+                      {
+                                        loading ? (
+                                          <>
+                                          <Loader2 className="mr-2 w-4 h-4 animate-spin"/>
+                                          please a wait...
+                                          </>
+                                        ) : ("Save Changes")
+                                      }
+                    </Button>
                   </DialogFooter>
                 </form>
               </DialogContent>

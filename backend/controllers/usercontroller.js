@@ -161,4 +161,23 @@ export const updateProfile = async(req, res)=>{
       message:"Failed to update profile"
     })
   }
-}          
+} 
+
+export const getAllUsers = async (req,res) =>{
+  try {
+    const  users = await User.find().select("-password")
+    res.status(200).json({
+      success: true,
+      message: "User list Fetched successfully",
+      total: users.length,
+      users
+    })
+  } catch (error) {
+    console.log("Error fetching user List", error);
+    res.status(500).json({
+      success:false,
+      message:"failed to fetch users"
+    })
+    
+  }
+}

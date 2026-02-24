@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import userRoute from "./routes/userRoute.js"
+import blogRoute from "./routes/blogroute.js"
+import commentRoute from "./routes/commentroute.js"
 import cors from "cors"
 import cookieParser from "cookie-parser";
 
@@ -31,6 +33,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/blog", blogRoute);
+app.use("/api/v1/comment", commentRoute);
 
 let PORT = 8000;
 mongoose

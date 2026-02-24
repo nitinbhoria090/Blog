@@ -36,17 +36,17 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     // Light mode mein 'bg-slate-50' (Smoke White) aur dark mode mein 'dark:bg-black'
-    <section className="relative overflow-hidden bg-slate-50 dark:bg-black transition-colors duration-500">
+    <section className="  relative overflow-hidden bg-slate-50 dark:bg-black transition-colors duration-500">
       
       {/* Dynamic Glows - Light mode mein halka gray, Dark mode mein colors */}
       <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-slate-200/50 dark:bg-purple-600/20 blur-3xl"></div>
       <div className="absolute top-1/2 -right-32 h-96 w-96 rounded-full bg-gray-200/50 dark:bg-blue-600/20 blur-3xl"></div>
 
-      <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center gap-14">
-        
-        {/* TEXT SECTION */}
+      {/* <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center gap-14"> */}
+        <div className="relative max-w-7xl mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row items-center gap-10">
+
         <div className="max-w-2xl text-center md:text-left">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-slate-900 dark:text-white mb-6">
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-slate-900 dark:text-white mb-4">
             Explore the{" "}
             {/* Gradient change based on theme */}
             <span className="bg-gradient-to-r from-slate-600 to-slate-400 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
@@ -86,7 +86,7 @@ const Hero = () => {
           <img
             src={heroImg}
             alt="Hero"
-            className="relative w-[320px] md:w-[500px] drop-shadow-2xl dark:drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] rounded-2xl transform hover:scale-105 transition duration-500"
+            className="relative w-[260px] md:w-[420px] drop-shadow-2xl dark:drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] rounded-2xl transform hover:scale-105 transition duration-500"
           />
         </div>
       </div>
