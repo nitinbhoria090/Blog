@@ -1,19 +1,127 @@
+// // import { useState } from "react";
+// // import { Input } from "../components/ui/input";
+// // import { Button } from "../components/ui/button";
+// // import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+// // import { Label } from "../components/ui/label";
+// // import { Eye, EyeOff } from "lucide-react";
+// // import { Link, useNavigate } from "react-router-dom";
+// // import axios from "axios";
+// // import { toast } from "sonner";
+// // import { useDispatch } from "react-redux";
+// // import { setUser } from "../redux/authSlice";
+// // import auth from "../assets/auth.jpg"
+
+// // const Login = () => {
+// //   const navigate = useNavigate()
+// //   const dispatch = useDispatch()
+// //   const [input, setInput] = useState({
+// //     email: "",
+// //     password: "",
+// //   });
+
+// //   const handleChange = (e) => {
+// //     const { name, value } = e.target;
+// //     setInput((prev) => ({
+// //       ...prev,
+// //       [name]: value,
+// //     }));
+// //   };
+
+// //   const handleSubmit = async (e) => {
+// //     e.preventDefault();
+// //     console.log(input);
+
+// //     try {
+// //       const response = await axios.post(`http://localhost:8000/api/v1/user/login`, input, {
+// //         headers: {
+// //           "Content-Type": "application/json"
+// //         },
+// //         withCredentials: true
+// //       });
+// //       if (response.data.success) {
+// //         navigate('/')
+// //         dispatch(setUser(response.data.user))
+// //         toast.success(response.data.message)
+// //       }
+// //     } catch (error) {
+// //       console.log(error.response.data.message);
+
+// //     }
+
+// //   };
+// //   const [showPassword, setShowPassword] = useState(false);
+// //   return (
+// //     <div className="flex items-center h-screen md:pt-14 md:h-[760px] ">
+// //       <div className="hidden md:block">
+// //         <img src={auth} alt="" className='h-[700px]' />
+// //       </div>
+// //       <div className='flex justify-center items-center flex-1 px-4 md:px-0'>
+// //       <Card className="w-full max-w-md p-6 shadow-lg rounded-2xl dark:bg-gray-800 dark:border-gray-600">
+// //         <CardHeader>
+// //           <CardTitle className="text-center text-xl font-semibold">Login into your account</CardTitle>
+// //           <p className='text-gray-600 dark:text-gray-300 mt-2 text-sm font-serif text-center'>Enter your details below to login your account</p>
+// //         </CardHeader>
+// //         <CardContent>
+// //           <form className="space-y-4" onSubmit={handleSubmit}>
+// //             <div>
+// //               <Label>Email</Label>
+// //               <Input type="email"
+// //                 placeholder="Email Address"
+// //                 name="email"
+// //                 value={input.email}
+// //                 onChange={handleChange}
+// //                 className="dark:border-gray-600 dark:bg-gray-900"
+// //               />
+// //             </div>
+
+// //             <div className="relative">
+// //               <Label>Password</Label>
+// //               <Input type={showPassword ? "text" : "password"}
+// //                 placeholder="Enter Your Password"
+// //                 name="password"
+// //                 value={input.password}
+// //                 onChange={handleChange}
+// //                 className="dark:border-gray-600 dark:bg-gray-900"
+// //               />
+// //               <button
+// //                 type="button"
+// //                 className="absolute right-3 top-9 text-gray-500"
+// //                 onClick={() => setShowPassword(!showPassword)}
+// //               >
+// //                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+// //               </button>
+// //             </div>
+
+// //             <Button type="submit" className="w-full">Login</Button>
+// //             <p className='text-center text-gray-600 dark:text-gray-300'>Don't have an account? <Link to={'/signup'}><span className='underline cursor-pointer hover:text-gray-800'>Sign up</span></Link></p>
+// //           </form>
+// //         </CardContent>
+// //       </Card>
+// //       </div>
+// //     </div>
+// //   )
+// // }
+
+// // export default Login
+
 // import { useState } from "react";
 // import { Input } from "../components/ui/input";
 // import { Button } from "../components/ui/button";
 // import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 // import { Label } from "../components/ui/label";
-// import { Eye, EyeOff } from "lucide-react";
+// import { Eye, EyeOff, Loader2 } from "lucide-react";
 // import { Link, useNavigate } from "react-router-dom";
 // import axios from "axios";
 // import { toast } from "sonner";
-// import { useDispatch } from "react-redux";
-// import { setUser } from "../redux/authSlice";
+// import { useDispatch, useSelector } from "react-redux";
+// import { setLoading, setUser } from "../redux/authSlice";
 // import auth from "../assets/auth.jpg"
 
 // const Login = () => {
-//   const navigate = useNavigate()
-//   const dispatch = useDispatch()
+//   const navigate = useNavigate();
+//   const dispatch = useDispatch();
+//   const [showPassword, setShowPassword] = useState(false);
+//   const {loading} = useSelector(store=>store.auth)
 //   const [input, setInput] = useState({
 //     email: "",
 //     password: "",
@@ -29,85 +137,125 @@
 
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
-//     console.log(input);
-
 //     try {
-//       const response = await axios.post(`http://localhost:8000/api/v1/user/login`, input, {
-//         headers: {
-//           "Content-Type": "application/json"
+//       dispatch(setLoading(true))
+//      const response = await axios.post(
+//        `http://localhost:8000/api/v1/user/login`,
+//         input,{
+//           headers:{
+//             "Content-type": "application/json"
+//           },
+//           withCredentials: true, 
 //         },
-//         withCredentials: true
-//       });
+//         // { withCredentials: true }
+//       )   
+      
 //       if (response.data.success) {
-//         navigate('/')
-//         dispatch(setUser(response.data.user))
-//         toast.success(response.data.message)
+//         dispatch(setUser(response.data.user));
+//         toast.success(response.data.message);
+//         navigate('/');
 //       }
 //     } catch (error) {
-//       console.log(error.response.data.message);
-
+//       const errorMsg = error.response?.data?.message || "Login failed";
+//       toast.error(errorMsg);
+//       console.log(error);
+//     }finally{
+//      dispatch(setLoading(false))
 //     }
-
 //   };
-//   const [showPassword, setShowPassword] = useState(false);
+
 //   return (
-//     <div className="flex items-center h-screen md:pt-14 md:h-[760px] ">
-//       <div className="hidden md:block">
-//         <img src={auth} alt="" className='h-[700px]' />
+//     // min-h-screen ensures the background covers the whole page
+//     <div className="flex min-h-screen w-full">
+      
+//       {/* LEFT SIDE: IMAGE (Hidden on mobile) */}
+//       <div className="hidden md:flex md:w-1/2 bg-gray-100">
+//         <img 
+//           src={auth} 
+//           alt="Auth" 
+//           className='w-full h-full object-cover' 
+//         />
 //       </div>
-//       <div className='flex justify-center items-center flex-1 px-4 md:px-0'>
-//       <Card className="w-full max-w-md p-6 shadow-lg rounded-2xl dark:bg-gray-800 dark:border-gray-600">
-//         <CardHeader>
-//           <CardTitle className="text-center text-xl font-semibold">Login into your account</CardTitle>
-//           <p className='text-gray-600 dark:text-gray-300 mt-2 text-sm font-serif text-center'>Enter your details below to login your account</p>
-//         </CardHeader>
-//         <CardContent>
-//           <form className="space-y-4" onSubmit={handleSubmit}>
-//             <div>
-//               <Label>Email</Label>
-//               <Input type="email"
-//                 placeholder="Email Address"
-//                 name="email"
-//                 value={input.email}
-//                 onChange={handleChange}
-//                 className="dark:border-gray-600 dark:bg-gray-900"
-//               />
-//             </div>
 
-//             <div className="relative">
-//               <Label>Password</Label>
-//               <Input type={showPassword ? "text" : "password"}
-//                 placeholder="Enter Your Password"
-//                 name="password"
-//                 value={input.password}
-//                 onChange={handleChange}
-//                 className="dark:border-gray-600 dark:bg-gray-900"
-//               />
-//               <button
-//                 type="button"
-//                 className="absolute right-3 top-9 text-gray-500"
-//                 onClick={() => setShowPassword(!showPassword)}
-//               >
-//                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-//               </button>
-//             </div>
+//       {/* RIGHT SIDE: LOGIN FORM */}
+//       <div className='flex items-center justify-center w-full md:w-1/2 px-4 bg-white dark:bg-gray-900'>
+//         <Card className="w-full max-w-md p-2 shadow-lg rounded-2xl dark:bg-gray-800 dark:border-gray-700">
+//           <CardHeader>
+//             <CardTitle className="text-center text-2xl font-bold">Login</CardTitle>
+//             <p className='text-gray-500 dark:text-gray-400 mt-2 text-sm text-center'>
+//               Welcome back! Please enter your details.
+//             </p>
+//           </CardHeader>
+//           <CardContent>
+//             <form className="space-y-5" onSubmit={handleSubmit}>
+//               <div className="space-y-2">
+//                 <Label htmlFor="email">Email</Label>
+//                 <Input 
+//                   id="email"
+//                   type="email"
+//                   placeholder="name@example.com"
+//                   name="email"
+//                   value={input.email}
+//                   onChange={handleChange}
+//                   className="dark:border-gray-600 dark:bg-gray-900"
+//                   required
+//                 />
+//               </div>
 
-//             <Button type="submit" className="w-full">Login</Button>
-//             <p className='text-center text-gray-600 dark:text-gray-300'>Don't have an account? <Link to={'/signup'}><span className='underline cursor-pointer hover:text-gray-800'>Sign up</span></Link></p>
-//           </form>
-//         </CardContent>
-//       </Card>
+//               <div className="space-y-2 relative">
+//                 <Label htmlFor="password">Password</Label>
+//                 <Input 
+//                   id="password"
+//                   type={showPassword ? "text" : "password"}
+//                   placeholder="••••••••"
+//                   name="password"
+//                   value={input.password}
+//                   onChange={handleChange}
+//                   className="dark:border-gray-600 dark:bg-gray-900"
+//                   required
+//                 />
+//                 <button
+//                   type="button"
+//                   className="absolute right-3 top-9 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+//                   onClick={() => setShowPassword(!showPassword)}
+//                 >
+//                   {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+//                 </button>
+//               </div>
+
+//               <Button type="submit" className="w-full font-semibold">
+//                 {
+//                   loading ? (
+//                     <>
+//                     <Loader2 className="mr-2 w-4 h-4 animate-spin"/>
+//                     please a wait...
+//                     </>
+//                   ) : ("Login")
+//                 }
+//               </Button>
+              
+//               <p className='text-center text-sm text-gray-600 dark:text-gray-400'>
+//                 Don't have an account?{" "}
+//                 <Link to='/signup' className='text-black dark:text-white font-semibold underline underline-offset-4 hover:opacity-80'>
+//                   Sign up
+//                 </Link>
+//               </p>
+//             </form>
+//           </CardContent>
+//         </Card>
 //       </div>
 //     </div>
-//   )
-// }
+//   );
+// };
 
-// export default Login
+// export default Login;
+
+
 
 import { useState } from "react";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
+import { Card, CardContent } from "../components/ui/card";
 import { Label } from "../components/ui/label";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -115,139 +263,147 @@ import axios from "axios";
 import { toast } from "sonner";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading, setUser } from "../redux/authSlice";
-import auth from "../assets/auth.jpg"
 
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { loading } = useSelector(store => store.auth);
+
   const [showPassword, setShowPassword] = useState(false);
-  const {loading} = useSelector(store=>store.auth)
   const [input, setInput] = useState({
     email: "",
     password: "",
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInput((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setInput({ ...input, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(setLoading(true))
-     const response = await axios.post(
-       `http://localhost:8000/api/v1/user/login`,
-        input,{
-          headers:{
-            "Content-type": "application/json"
-          },
-          withCredentials: true, 
-        },
-        // { withCredentials: true }
-      )   
-      
-      if (response.data.success) {
-        dispatch(setUser(response.data.user));
-        toast.success(response.data.message);
-        navigate('/');
+      dispatch(setLoading(true));
+
+      const res = await axios.post(
+        `http://localhost:8000/api/v1/user/login`,
+        input,
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+
+      if (res.data.success) {
+        dispatch(setUser(res.data.user));
+        toast.success(res.data.message);
+        navigate("/");
       }
     } catch (error) {
-      const errorMsg = error.response?.data?.message || "Login failed";
-      toast.error(errorMsg);
-      console.log(error);
-    }finally{
-     dispatch(setLoading(false))
+      toast.error(error.response?.data?.message || "Login failed");
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
   return (
-    // min-h-screen ensures the background covers the whole page
-    <div className="flex min-h-screen w-full">
-      
-      {/* LEFT SIDE: IMAGE (Hidden on mobile) */}
-      <div className="hidden md:flex md:w-1/2 bg-gray-100">
-        <img 
-          src={auth} 
-          alt="Auth" 
-          className='w-full h-full object-cover' 
-        />
-      </div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gray-100 dark:bg-black text-gray-900 dark:text-white transition-colors duration-300 px-4">
 
-      {/* RIGHT SIDE: LOGIN FORM */}
-      <div className='flex items-center justify-center w-full md:w-1/2 px-4 bg-white dark:bg-gray-900'>
-        <Card className="w-full max-w-md p-2 shadow-lg rounded-2xl dark:bg-gray-800 dark:border-gray-700">
-          <CardHeader>
-            <CardTitle className="text-center text-2xl font-bold">Login</CardTitle>
-            <p className='text-gray-500 dark:text-gray-400 mt-2 text-sm text-center'>
-              Welcome back! Please enter your details.
+      {/* 🔥 Background blobs (same as PopularAuthor) */}
+      <div className="absolute -top-24 -left-24 w-80 h-80 bg-orange-300/40 dark:bg-orange-500/20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-[-100px] right-[-100px] w-80 h-80 bg-gray-400/40 dark:bg-gray-500/20 rounded-full blur-3xl"></div>
+
+      {/* 🔳 Grid overlay */}
+      <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.08]
+        bg-[linear-gradient(to_right,#000_1px,transparent_1px),
+        linear-gradient(to_bottom,#000_1px,transparent_1px)]
+        dark:bg-[linear-gradient(to_right,#fff_1px,transparent_1px),
+        linear-gradient(to_bottom,#fff_1px,transparent_1px)]
+        bg-[size:40px_40px]"></div>
+
+      {/* 🔥 Login Card */}
+      <Card className="relative w-full max-w-md bg-white/70 dark:bg-gray-900/60 backdrop-blur-xl border border-gray-200 dark:border-gray-700 shadow-2xl rounded-2xl p-6">
+
+        <CardContent>
+
+          {/* 🔹 Heading */}
+          <div className="text-center mb-6">
+            <h1 className="text-3xl font-extrabold">
+              Welcome{" "}
+              <span className="bg-gradient-to-r from-orange-500 to-gray-700 dark:from-orange-400 dark:to-gray-300 bg-clip-text text-transparent">
+                Back
+              </span>
+            </h1>
+            <p className="text-gray-600 dark:text-gray-400 mt-2 text-sm">
+              Login to continue your journey 🚀
             </p>
-          </CardHeader>
-          <CardContent>
-            <form className="space-y-5" onSubmit={handleSubmit}>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input 
-                  id="email"
-                  type="email"
-                  placeholder="name@example.com"
-                  name="email"
-                  value={input.email}
-                  onChange={handleChange}
-                  className="dark:border-gray-600 dark:bg-gray-900"
-                  required
-                />
-              </div>
+          </div>
 
-              <div className="space-y-2 relative">
-                <Label htmlFor="password">Password</Label>
-                <Input 
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  name="password"
-                  value={input.password}
-                  onChange={handleChange}
-                  className="dark:border-gray-600 dark:bg-gray-900"
-                  required
-                />
-                <button
-                  type="button"
-                  className="absolute right-3 top-9 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                </button>
-              </div>
+          {/* 🔹 Form */}
+          <form onSubmit={handleSubmit} className="space-y-5">
 
-              <Button type="submit" className="w-full font-semibold">
-                {
-                  loading ? (
-                    <>
-                    <Loader2 className="mr-2 w-4 h-4 animate-spin"/>
-                    please a wait...
-                    </>
-                  ) : ("Login")
-                }
-              </Button>
-              
-              <p className='text-center text-sm text-gray-600 dark:text-gray-400'>
-                Don't have an account?{" "}
-                <Link to='/signup' className='text-black dark:text-white font-semibold underline underline-offset-4 hover:opacity-80'>
-                  Sign up
-                </Link>
-              </p>
-            </form>
-          </CardContent>
-        </Card>
-      </div>
-    </div>
+            <div>
+              <Label>Email</Label>
+              <Input
+                type="email"
+                name="email"
+                placeholder="name@example.com"
+                value={input.email}
+                onChange={handleChange}
+                className="bg-white/80 dark:bg-gray-800 border-gray-300 dark:border-gray-600"
+                required
+              />
+            </div>
+
+            <div className="relative">
+              <Label>Password</Label>
+              <Input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="••••••••"
+                value={input.password}
+                onChange={handleChange}
+                className="bg-white/80 dark:bg-gray-800 border-gray-300 dark:border-gray-600"
+                required
+              />
+
+              <button
+                type="button"
+                className="absolute right-3 top-9 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
+
+            {/* 🔹 Button */}
+            <Button className="w-full font-semibold bg-orange-500 hover:bg-orange-600 text-white">
+              {
+                loading ? (
+                  <>
+                    <Loader2 className="mr-2 w-4 h-4 animate-spin" />
+                    Please wait...
+                  </>
+                ) : "Login"
+              }
+            </Button>
+
+            {/* 🔹 Footer */}
+            <p className="text-center text-sm text-gray-600 dark:text-gray-400">
+              Don’t have an account?{" "}
+              <Link
+                to="/signup"
+                className="font-semibold underline underline-offset-4 hover:opacity-80"
+              >
+                Sign up
+              </Link>
+            </p>
+
+          </form>
+        </CardContent>
+      </Card>
+    </section>
   );
 };
 
 export default Login;
-
 

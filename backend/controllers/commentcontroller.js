@@ -291,11 +291,55 @@ export const likeComment = async (req, res) => {
 };
 
 
+// export const getAllCommentOnMyBlogs = async (req, res) => {
+//     try {
+//         const userId = req.id;
+//        console.log(userId)
+//         const myBlogs = await Blog.find({ author: userId }).select("_id");
+//         const blogIds = myBlogs.map(blog => blog._id);
+
+//         if (blogIds.length === 0) {
+//             return res.status(200).json({
+//                 success: true,
+//                 totalComments: 0,
+//                 comments: [],
+//                 message: "No blogs found"
+//             });
+//         }
+
+//         const comments = await Comment.find({
+//             postId: { $in: blogIds }
+//         })
+//             .populate("userId", "firstName lastName email")
+//             .populate("postId", "title")
+//             .sort({ createdAt: -1 });
+
+//         return res.status(200).json({
+//             success: true,
+//             totalComments: comments.length,
+//             comments
+//         });
+
+//     } catch (error) {
+//         return res.status(500).json({
+//             success: false,
+//             message: "Failed to get comments"
+//         });
+//     }
+// };
+
+
+
 export const getAllCommentOnMyBlogs = async (req, res) => {
     try {
+        console.log("User ID from middleware:", req.id);
+
         const userId = req.id;
 
+
         const myBlogs = await Blog.find({ author: userId }).select("_id");
+        console.log("My Blogs:", myBlogs);
+
         const blogIds = myBlogs.map(blog => blog._id);
 
         if (blogIds.length === 0) {
@@ -310,9 +354,9 @@ export const getAllCommentOnMyBlogs = async (req, res) => {
         const comments = await Comment.find({
             postId: { $in: blogIds }
         })
-            .populate("userId", "firstName lastName email")
-            .populate("postId", "title")
-            .sort({ createdAt: -1 });
+        .populate("userId", "firstName lastName email")
+        .populate("postId", "title")
+        .sort({ createdAt: -1 });
 
         return res.status(200).json({
             success: true,
@@ -321,9 +365,12 @@ export const getAllCommentOnMyBlogs = async (req, res) => {
         });
 
     } catch (error) {
+        console.error("🔥 ERROR:", error);  // 👈 VERY IMPORTANT
+
         return res.status(500).json({
             success: false,
-            message: "Failed to get comments"
+            message: error.message
         });
     }
 };
+

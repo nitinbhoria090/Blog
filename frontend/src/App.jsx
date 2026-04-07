@@ -14,70 +14,75 @@ import CreateBlog from './pages/CreateBlog'
 import UpdateBlog from './pages/UpdateBlog'
 import BlogView from './pages/BlogView'
 import Footer from './components/Footer'
+import SearchList from './pages/SearchList'
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<><Navbar/><Home/><Footer/></> 
+    element: <><Navbar /><Home /><Footer /></>
   },
   {
     path: "/blogs",
-    element: <><Navbar/><Blogs/><Footer/></>
+    element: <><Navbar /><Blogs /><Footer /></>
   },
-  
-{
+
+  {
     path: "/about",
-    element: <><Navbar/><About/><Footer/></>
+    element: <><Navbar /><About /><Footer /></>
+  },
+  {
+    path: "/search",
+    element: <><Navbar /><SearchList /><Footer /></>
   },
   {
     path: "/login",
-    element: <><Navbar/><Login/></>
+    element: <><Navbar /><Login /></>
   },
   {
     path: "/signup",
-    element: <><Navbar/><Signup/></>
-  },
-   {
-    path: "/blogs/:blogId",
-    element: <><Navbar/><BlogView/></>
+    element: <><Navbar /><Signup /></>
   },
   {
-    path:"/dashboard",
-    element:<><Navbar/><Dashboard/></>,
-    children:[
+    path: "/blogs/:blogId",
+    element: <><Navbar /><BlogView /></>
+  },
+  {
+    path: "/dashboard",
+    element: <><Navbar /><Dashboard /></>,
+    children: [
       {
-       path: "profile",
-       element:<Profile/>
-      },
-       {
-       path: "blogs",
-       element:<YourBlog/>
-      },
-       {
-       path: "comments",
-       element:<Comments/>
-      },
-       {
-       path: "create-blog",
-       element:<CreateBlog/>
+        path: "profile",
+        element: <Profile />
       },
       {
-        path:"write-blog/:blogId",
-        element:<UpdateBlog/>
+        path: "blogs",
+        element: <YourBlog />
+      },
+      {
+        path: "comments",
+        element: <Comments />
+      },
+      {
+        path: "create-blog",
+        element: <CreateBlog />
+      },
+      {
+        path: "write-blog/:blogId",
+        element: <UpdateBlog />
       }
     ]
   }
-  
-  
+
+
 
 ])
 const App = () => {
   return (
     <>
-    <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </>
-  )   
+  )
 }
 
 export default App

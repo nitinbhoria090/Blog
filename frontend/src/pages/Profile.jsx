@@ -28,6 +28,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLoading, setUser } from '@/redux/authSlice'
 import axios from 'axios'
 import { toast } from 'sonner'
+import TotalProperty from '@/components/TotalProperty'
 
 
 
@@ -252,11 +253,11 @@ const Profile = () => {
                   </DialogDescription>
                 </DialogHeader>
 
-                {/* ✅ form moved INSIDE DialogContent */}
+                
                 <form>
                   <div className="grid grid-cols-2 gap-4 py-4">
 
-                    {/* First Name */}
+                    
                     <div className="flex flex-col gap-1">
                       <Label htmlFor="firstName">First Name</Label>
                       <Input
@@ -270,7 +271,7 @@ const Profile = () => {
                       />
                     </div>
 
-                    {/* Last Name */}
+                    
                     <div className="flex flex-col gap-1">
                       <Label htmlFor="lastName">Last Name</Label>
                       <Input
@@ -284,7 +285,7 @@ const Profile = () => {
                       />
                     </div>
 
-                    {/* Instagram */}
+                    
                     <div className="flex flex-col gap-1">
                       <Label htmlFor="instagram">Instagram</Label>
                       <Input
@@ -297,7 +298,7 @@ const Profile = () => {
                       />
                     </div>
 
-                    {/* Github */}
+                 
                     <div className="flex flex-col gap-1">
                       <Label htmlFor="github">Github</Label>
                       <Input
@@ -310,7 +311,7 @@ const Profile = () => {
                       />
                     </div>
 
-                    {/* Linkedin */}
+                    
                     <div className="flex flex-col gap-1">
                       <Label htmlFor="linkedin">Linkedin</Label>
                       <Input
@@ -323,7 +324,7 @@ const Profile = () => {
                       />
                     </div>
 
-                    {/* Facebook (typo fixed) */}
+                    
                     <div className="flex flex-col gap-1">
                       <Label htmlFor="facebook">Facebook</Label>
                       <Input
@@ -337,7 +338,7 @@ const Profile = () => {
                     </div>
                   </div>
 
-                  {/* Bio */}
+                  
                   <div className="mb-4">
                     <Label htmlFor="bio">Description</Label>
                     <Textarea
@@ -350,7 +351,7 @@ const Profile = () => {
                     />
                   </div>
 
-                  {/* Image */}
+                
                   <div className="mb-4">
                     <Label htmlFor="file">Picture</Label>
                     <Input
@@ -382,23 +383,12 @@ const Profile = () => {
 
         </Card>
       </div>
+      <TotalProperty/>
     </div>
   )
 }
 
 export default Profile
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -73,28 +73,7 @@ const CommentBox = ({ selectedBlog }) => {
         }
     }
 
-    // const editCommentHandler = async (commentId)=>{
-    //     try {
-    //         const res = await axios.put(`http://localhost:8000/api/v1/comment/${commentId._id}/edit`,{content:editedContent},{
-    //             withCredentials: true,
-    //             headers:{
-    //                 "Content-Type": "application/json"
-    //             }
-    //         })
-    //         if(res.data.success){
-    //             const updatedCommentData = comment.map(item=>
-    //                 item._id === commentId ? {...item, content:editedContent} : item
-    //             );
-    //             dispatch(setComment(updatedCommentData))
-    //             toast.success(res.data.message)
-    //             setEditingCommentId(null)
-    //             setEditedContent("")
-    //         }
-    //     } catch (error) {
-    //         console.log(error);
-    //         toast.error("Failed to Edit Comment")
-    //     }
-    // }
+    
     const editCommentHandler = async (commentId) => {
         try {
             const res = await axios.put(
@@ -147,26 +126,7 @@ const CommentBox = ({ selectedBlog }) => {
         }
     }
 
-    // const likeCommentHandler = async (commentId) =>{
-    //     try {
-    //         const res = await axios.put(`http://localhost:8000/api/v1/comment/${commentId}/like`,{
-    //             withCredentials: true
-    //         })
-    //         if(res.data.success){
-    //             const updatedComment = res.data.updatedComment;
-
-    //             const updatedCommentList = comment.map(item=>
-    //                 item._id === commentId ? updatedComment : item
-    //             );
-    //             dispatch(setComment(updatedCommentList))
-    //             toast.success(res.data.message)
-    //         }
-    //     } catch (error) {
-    //      console.log("Error liking comment", error);
-    //      toast.error("something went wrong")
-
-    //     }
-    // }
+    
     const likeCommentHandler = async (commentId) => {
         try {
             const res = await axios.post(
@@ -357,3 +317,9 @@ const CommentBox = ({ selectedBlog }) => {
 }
 
 export default CommentBox
+
+
+
+
+
+

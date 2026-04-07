@@ -28,6 +28,9 @@
 // }
 
 // export default Hero
+
+
+
 import React from "react";
 import heroImg from "../assets/blog2.png";
 import { Button } from "./ui/button";
@@ -35,34 +38,37 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    // Light mode mein 'bg-slate-50' (Smoke White) aur dark mode mein 'dark:bg-black'
-    <section className="  relative overflow-hidden bg-slate-50 dark:bg-black transition-colors duration-500">
-      
-      {/* Dynamic Glows - Light mode mein halka gray, Dark mode mein colors */}
-      <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-slate-200/50 dark:bg-purple-600/20 blur-3xl"></div>
-      <div className="absolute top-1/2 -right-32 h-96 w-96 rounded-full bg-gray-200/50 dark:bg-blue-600/20 blur-3xl"></div>
+    <section className="relative overflow-hidden bg-gray-100 text-gray-900 dark:bg-black dark:text-white transition-colors duration-300">
 
-      {/* <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32 flex flex-col md:flex-row items-center gap-14"> */}
-        <div className="relative max-w-7xl mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row items-center gap-10">
 
+      <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-orange-300/40 dark:bg-orange-500/20 blur-3xl"></div>
+      <div className="absolute bottom-[-120px] right-[-120px] h-96 w-96 rounded-full bg-gray-400/40 dark:bg-gray-500/20 blur-3xl"></div>
+
+
+      <div className="absolute inset-0 opacity-[0.05] dark:opacity-[0.08] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+
+      <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center gap-12">
+
+       
         <div className="max-w-2xl text-center md:text-left">
-          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight text-slate-900 dark:text-white mb-4">
+
+          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-5">
             Explore the{" "}
-            {/* Gradient change based on theme */}
-            <span className="bg-gradient-to-r from-slate-600 to-slate-400 dark:from-purple-400 dark:to-blue-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-orange-500 to-gray-700 dark:from-orange-400 dark:to-gray-300 bg-clip-text text-transparent">
               Latest Tech
             </span>{" "}
             & Web Trends
           </h1>
 
-          <p className="text-base md:text-lg text-slate-600 dark:text-gray-300 mb-8 font-medium">
+          <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg mb-8">
             Stay ahead with in-depth articles, tutorials, and insights on web
             development, digital marketing, and emerging technologies.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <Link to="/dashboard/write-blog">
-              <Button className="px-8 py-6 text-lg bg-slate-900 dark:bg-white text-white dark:text-black hover:opacity-90 transition shadow-lg">
+
+            <Link to="/dashboard/create-blog">
+              <Button className="px-8 py-6 text-lg bg-orange-500 hover:bg-orange-600 text-white shadow-lg transition transform hover:scale-105">
                 Get Started
               </Button>
             </Link>
@@ -70,25 +76,28 @@ const Hero = () => {
             <Link to="/about">
               <Button
                 variant="outline"
-                className="px-8 py-6 text-lg border-slate-300 dark:border-gray-600 text-slate-700 dark:text-gray-200 hover:bg-white/50 dark:hover:bg-white/10"
+                className="px-8 py-6 text-lg border-gray-400 dark:border-gray-600 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-900 transition"
               >
                 Learn More
               </Button>
             </Link>
+
           </div>
         </div>
 
-        {/* IMAGE SECTION */}
         <div className="flex justify-center relative">
-          {/* Decorative circle behind image (Only visible in light mode for depth) */}
-          <div className="absolute inset-0 bg-slate-200 dark:bg-transparent rounded-full blur-3xl opacity-40 transform scale-75"></div>
+
           
+          <div className="absolute inset-0 bg-orange-400/30 dark:bg-orange-500/20 rounded-full blur-3xl scale-75"></div>
+
           <img
             src={heroImg}
             alt="Hero"
-            className="relative w-[260px] md:w-[420px] drop-shadow-2xl dark:drop-shadow-[0_20px_40px_rgba(0,0,0,0.7)] rounded-2xl transform hover:scale-105 transition duration-500"
+            className="relative w-[260px] md:w-[420px] rounded-2xl shadow-2xl hover:scale-105 transition duration-500"
           />
+
         </div>
+
       </div>
     </section>
   );
