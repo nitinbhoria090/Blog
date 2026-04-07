@@ -285,7 +285,7 @@ const Login = () => {
       dispatch(setLoading(true));
 
       const res = await axios.post(
-        `http://localhost:8000/api/v1/user/login`,
+        `https://blog-2-zfmp.onrender.com/api/v1/user/login`,
         input,
         {
           headers: { "Content-Type": "application/json" },
