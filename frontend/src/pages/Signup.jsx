@@ -33,7 +33,7 @@ const Signup = () => {
     e.preventDefault()
     try {
       const response = await axios.post(
-       `https://blog-2-zfmp.onrender.com/api/v1/user/register`,
+       `https://blog-2-zfmp.onrender.com/api/v1/api/v1/user/register`,
         user,{
           headers:{
             "Content-type": "application/json"

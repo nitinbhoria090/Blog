@@ -16,7 +16,7 @@ const Comments = () => {
   const getTotalComments = async () => {
     try {
       const res = await axios.get(
-        `https://blog-2-zfmp.onrender.com/api/v1/comment/my-blogs/comments`,
+        `https://blog-2-zfmp.onrender.com/api/v1/api/v1/comment/my-blogs/comments`,
         { withCredentials: true }
       )
       if (res.data.success) {

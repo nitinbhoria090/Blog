@@ -79,11 +79,11 @@ const Profile = () => {
     try {
       dispatch(setLoading(true));
       console.log(formData);
-      // const res = axios.put(`https://blog-2-zfmp.onrender.com/user/profile/update`, formData, {
+      // const res = axios.put(`https://blog-2-zfmp.onrender.com/api/v1/user/profile/update`, formData, {
       //   withCredentials: true
       // });
 
-      const res = await axios.put(`https://blog-2-zfmp.onrender.com/api/v1/user/profile/update`, formData, {
+      const res = await axios.put(`https://blog-2-zfmp.onrender.com/api/v1/api/v1/user/profile/update`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
 
