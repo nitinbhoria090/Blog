@@ -108,12 +108,7 @@ app.use("/api/v1/comment", commentRoute);
 
 app.use(express.static(path.join(_dirname, "frontend/dist")));
 
-// ✅ Express v5 compatible fallback
-app.get("/:path(.*)", (req, res) => {
-  res.sendFile(
-    path.resolve(_dirname, "frontend", "dist", "index.html")
-  );
-});
+
 
 // server
 const PORT = 8000;
