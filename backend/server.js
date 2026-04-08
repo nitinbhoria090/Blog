@@ -97,14 +97,23 @@ app.use("/api/v1/blog", blogRoute);
 app.use("/api/v1/comment", commentRoute);
 
 // serve frontend (dist)
+// app.use(express.static(path.join(_dirname, "frontend/dist")));
+
+// // ⚠️ fallback route (React/Vite)
+// // app.get("*", (req, res) => {
+// //   res.sendFile(
+// //     path.resolve(_dirname, "frontend", "dist", "index.html")
+// //   );
+// // });
+
 app.use(express.static(path.join(_dirname, "frontend/dist")));
 
-// ⚠️ fallback route (React/Vite)
-// app.get("*", (req, res) => {
-//   res.sendFile(
-//     path.resolve(_dirname, "frontend", "dist", "index.html")
-//   );
-// });
+// ✅ ye uncomment karo
+app.get("*", (req, res) => {
+  res.sendFile(
+    path.resolve(_dirname, "frontend", "dist", "index.html")
+  );
+});
 
 // server
 const PORT = 8000;
