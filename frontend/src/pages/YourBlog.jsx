@@ -259,7 +259,6 @@ const YourBlog = () => {
 
           <TableCaption>A list of your recent Blogs.</TableCaption>
 
-          {/* ================= DESKTOP TABLE ================= */}
           <div className="hidden md:block overflow-x-auto">
             <Table className="min-w-[700px]">
               <TableHeader>
@@ -334,7 +333,7 @@ const YourBlog = () => {
             </Table>
           </div>
 
-          {/* ================= MOBILE CARDS ================= */}
+         
           <div className="md:hidden space-y-4">
             {blog.map((item) => (
               <div
