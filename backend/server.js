@@ -108,8 +108,8 @@ app.use("/api/v1/comment", commentRoute);
 
 app.use(express.static(path.join(_dirname, "frontend/dist")));
 
-// ✅ ye uncomment karo
-app.get("*", (req, res) => {
+// ✅ Express v5 compatible fallback
+app.get("/*", (req, res) => {
   res.sendFile(
     path.resolve(_dirname, "frontend", "dist", "index.html")
   );
