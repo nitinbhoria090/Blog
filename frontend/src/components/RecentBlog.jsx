@@ -16,7 +16,7 @@
 //     useEffect(() => {
 //         const getPublishedBlogs = async () => {
 //             try {
-//                 const res = await axios.get(`http://localhost:8000/api/v1/blog/get-published-blogs`, { withCredentials: true })
+//                 const res = await axios.get(`https://blog-2-zfmp.onrender.com/blog/get-published-blogs`, { withCredentials: true })
 //                 if(res.data.success){
 //                    dispatch(setBlog(res.data.blogs))
 //                 }

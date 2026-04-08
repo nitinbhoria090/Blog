@@ -83,7 +83,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://blog-2-zfmp.onrender.com",
     credentials: true,
   })
 );

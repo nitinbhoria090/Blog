@@ -76,7 +76,7 @@ const UpdateBlog = () => {
     formData.append("file", blogData.thumbnail)
     try {
       dispatch(setLoading(true))
-      const res = await axios.put(`http://localhost:8000/api/v1/blog/${id}`, formData, {
+      const res = await axios.put(`https://blog-2-zfmp.onrender.com/blog/${id}`, formData, {
         Headers: {
           "Content-Type": "multipart/form-data"
         },

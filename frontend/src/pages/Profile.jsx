@@ -79,7 +79,7 @@ const Profile = () => {
     try {
       dispatch(setLoading(true));
       console.log(formData);
-      // const res = axios.put(`http://localhost:8000/api/v1/user/profile/update`, formData, {
+      // const res = axios.put(`https://blog-2-zfmp.onrender.com/user/profile/update`, formData, {
       //   withCredentials: true
       // });
 
