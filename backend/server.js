@@ -83,7 +83,7 @@ app.use(cookieParser());
 
 app.use(
   cors({
-    origin: "https://blog-bice-omega.vercel.app",
+    origin: "https://blog-2-zfmp.onrender.com",
     credentials: true,
   })
 );
