@@ -1,40 +1,6 @@
 import { Blog } from "../models/blog.model.js"
 import Comment from "../models/comment.model.js"
 
-// export const createComment = async (req, res) => {
-//     try {
-//         const postId = req.params.id
-//         const commentKrneWaleUserKiId = req.id
-//         const { content } = req.body;
-
-//         const blog = await Blog.findById(postId)
-//         if (!content) return res.status(400).json({
-//             message: "text is required",
-//             success: false
-//         })
-
-//         const comment = await Comment.create({
-//             content,
-//             userId: commentKrneWaleUserKiId,
-//             postId: postId
-//         })
-
-//         await comment.populate({
-//             path: 'userId',
-//             select: `firstName lastName photoUrl`
-//         })
-
-//         blog.comments.push(comment._id)
-//         await blog.save()
-//         return res.status(201).json({
-//             message: "comment added",
-//             success: true
-//         })
-//     } catch (error) {
-//         console.log(error);
-
-//     }
-// }
 
 
 export const createComment = async (req, res) => {
