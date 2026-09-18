@@ -84,12 +84,12 @@ const BlogView = () => {
   return (
     <div className="pt-16 min-h-screen bg-white dark:bg-[#0B1120] text-black dark:text-white">
 
-      {/* 🔥 Glow */}
+     
       <div className="absolute left-0 top-20 w-40 sm:w-72 h-40 sm:h-72 bg-orange-500/20 blur-3xl rounded-full"></div>
 
       <div className="max-w-4xl lg:max-w-5xl mx-auto px-4 sm:px-6 py-8">
 
-        {/* 🔹 Breadcrumb */}
+       
         <Breadcrumb>
           <BreadcrumbList className="text-gray-600 dark:text-gray-400">
             <BreadcrumbItem>
@@ -116,12 +116,12 @@ const BlogView = () => {
           </BreadcrumbList>
         </Breadcrumb>
 
-        {/* 🔹 Title */}
+        
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold mt-6 leading-tight">
           {selectedBlog.title}
         </h1>
 
-        {/* 🔹 Author */}
+        
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mt-6">
 
           <div className="flex items-center gap-3">
@@ -145,7 +145,7 @@ const BlogView = () => {
           </p>
         </div>
 
-        {/* 🔹 Image */}
+    
         <div className="mt-8">
           <img
             src={selectedBlog.thumbnail}
@@ -157,13 +157,13 @@ const BlogView = () => {
           </p>
         </div>
 
-        {/* 🔹 Content */}
+       
         <div
           className="prose dark:prose-invert max-w-none mt-8"
           dangerouslySetInnerHTML={{ __html: selectedBlog.description }}
         />
 
-        {/* 🔹 Actions */}
+    
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 border-y border-gray-300 dark:border-gray-800 py-4 mt-10">
 
           <div className="flex items-center gap-4">
@@ -192,7 +192,7 @@ const BlogView = () => {
 
       </div>
 
-      {/* 🔹 Comments */}
+      
       <div className="max-w-4xl mx-auto px-4 pb-10">
         <CommentBox selectedBlog={selectedBlog} />
       </div>
