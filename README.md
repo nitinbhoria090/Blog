@@ -78,11 +78,8 @@ The project demonstrates practical implementation of full-stack development conc
 
 * MongoDB
 * Mongoose
-
-### Additional Technologies
-
 * JWT Authentication
-* Cloudinary / Image Upload Service (if implemented)
+* Cloudinary / Image Upload Service
 * Git & GitHub
 
 ## 🏗️ Application Workflow
