@@ -40,7 +40,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Footer Quote */}
+        
         <div className="mt-16 text-center">
           <blockquote className="text-2xl italic text-gray-500">
             "Words are powerful. Use them to inspire."
