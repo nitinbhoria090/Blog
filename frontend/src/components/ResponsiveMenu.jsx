@@ -26,7 +26,7 @@ const ResponsiveMenu = ({ openNav, setOpenNav, logoutHandler }) => {
         />
       )}
 
-      {/* 📱 Sidebar */}
+     
       <div
         className={`fixed top-0 left-0 z-20 h-screen w-[75%] max-w-xs 
         bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl
@@ -37,10 +37,10 @@ const ResponsiveMenu = ({ openNav, setOpenNav, logoutHandler }) => {
         `}
       >
 
-        {/* 🔥 Top */}
+       
         <div>
 
-          {/* 👤 User */}
+          
           <div className='flex items-center gap-3 mb-10'>
             {
               user ? (
@@ -60,7 +60,7 @@ const ResponsiveMenu = ({ openNav, setOpenNav, logoutHandler }) => {
             </div>
           </div>
 
-          {/* 🔗 Navigation */}
+          
           <nav>
             <ul className='flex flex-col gap-6 text-lg font-medium'>
 
@@ -85,7 +85,7 @@ const ResponsiveMenu = ({ openNav, setOpenNav, logoutHandler }) => {
             </ul>
           </nav>
 
-          {/* 🔘 Auth Button */}
+        
           <div className="mt-10">
             {
               user ? (
@@ -107,7 +107,7 @@ const ResponsiveMenu = ({ openNav, setOpenNav, logoutHandler }) => {
 
         </div>
 
-        {/* ❤️ Footer */}
+        
         <div className='text-center text-xs text-gray-500'>
           Made with ❤️ by <span className="text-orange-500 font-medium">Nitin</span>
         </div>
