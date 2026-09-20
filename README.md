@@ -114,7 +114,7 @@ The project demonstrates practical implementation of full-stack development conc
 
 ```bash
 git clone YOUR_REPOSITORY_URL
-cd blogsphere-fullstack
+cd bloglogo-fullstack
 ```
 
 ### Install frontend dependencies
@@ -139,6 +139,9 @@ Create a `.env` file inside the backend directory:
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
+SECRET_KEY=yourkey
+CLOUD_NAME=
+API_SECRET=
 ```
 
 Add any other required environment variables used by the project.
